@@ -34,10 +34,13 @@ function App() {
     });
   };
 
-  const sum = ({ good, neutral, bad }) => {
-    return good + neutral + bad;
-  };
-  const totalFeedback = sum(voteData);
+  function getSum(arr) {
+    const values = Object.values(arr);
+    return values.reduce((acc, item) => {
+      return acc + item;
+    }, 0);
+  }
+  const totalFeedback = getSum(voteData);
 
   return (
     <div>
