@@ -1,0 +1,64 @@
+import { useEffect, useState } from 'react';
+import './App.css';
+import Description from './components/Description/Description';
+import Options from './components/Options/Options';
+import Feedback from './components/Feedback/Feedback';
+import Notification from './components/Notification/Notification';
+
+function App() {
+  // const [voteData, setVoteData] = useState({
+  //   good: 0,
+  //   neutral: 0,
+  //   bad: 0,
+  // });
+
+  const [voteData, setVoteData] = useState(() => {
+    const saveDate = JSON.parse(localStorage.getItem('vote'));
+    // console.log(saveDate);
+
+    if (saveDate?.length) {
+      return { good: 0, neutral: 0, bad: 0 };
+    }
+    return saveDate;
+  });
+
+  const updateFeedback = feedbackType => {
+    console.log(feedbackType);
+    setVoteData(prev => ({
+      ...prev,
+      [feedbackType]: prev[feedbackType] + 1,
+    }));
+  };
+
+  useEffect(() => {
+    localStorage.setItem('vote', JSON.stringify(voteData));
+  }, [voteData]);
+
+  const clearFeedback = () => {
+    setVoteData({
+      good: 0,
+      neutral: 0,
+      bad: 0,
+    });
+  };
+
+  const totalFeedback = voteData.good + voteData.neutral + voteData.bad;
+
+  return (
+    <div>
+      <Description />
+      <Options
+        voteData={voteData}
+        updateFeedback={updateFeedback}
+        totalFeedback={totalFeedback}
+        clearFeedback={clearFeedback}
+      />
+      {totalFeedback === 0 && <Notification />}
+      {totalFeedback !== 0 && (
+        <Feedback voteData={voteData} totalFeedback={totalFeedback} />
+      )}
+    </div>
+  );
+}
+
+export default App;

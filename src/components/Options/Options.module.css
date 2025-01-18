@@ -1,0 +1,14 @@
+.container {
+  height: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  padding: 10px;
+  margin-bottom: 5px;
+}
+.button {
+  height: 35px;
+  cursor: pointer;
+  padding-left: 15px;
+  padding-right: 15px;
+}

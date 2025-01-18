@@ -1,0 +1,13 @@
+.conteiner {
+  padding: 10px;
+}
+.list {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  gap: 10px;
+}
+.item {
+  font-size: 18px;
+  font-weight: 200;
+}
