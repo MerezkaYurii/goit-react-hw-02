@@ -34,15 +34,7 @@ function App() {
     });
   };
 
-  function getSum(arr) {
-    let total = 0;
-    const keys = Object.keys(arr);
-    for (const key of keys) {
-      total += arr[key];
-    }
-    return total;
-  }
-  const totalFeedback = getSum(voteData);
+  const totalFeedback = voteData.good + voteData.neutral + voteData.bad;
 
   return (
     <div>

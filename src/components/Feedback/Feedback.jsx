@@ -9,7 +9,7 @@ const Feedback = ({ voteData, totalFeedback }) => {
         <li className={s.item}>Bad: {voteData.bad}</li>
         <li className={s.item}>Total: {totalFeedback}</li>
         <li className={s.item}>
-          Positive: {Math.round((voteData.good / totalFeedback) * 100)}%
+          Positive: {Math.round((voteData.good / totalFeedback) * 100) || 0}%
         </li>
       </ul>
     </div>
