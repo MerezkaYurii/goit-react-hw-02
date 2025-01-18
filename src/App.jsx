@@ -34,7 +34,10 @@ function App() {
     });
   };
 
-  const totalFeedback = voteData.good + voteData.neutral + voteData.bad;
+  const sum = voteData => {
+    return voteData.good + voteData.neutral + voteData.bad;
+  };
+  const totalFeedback = sum(voteData);
 
   return (
     <div>
