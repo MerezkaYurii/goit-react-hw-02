@@ -34,7 +34,7 @@ function App() {
     });
   };
 
-  const totalFeedback = voteData.good + voteData.neutral + voteData.bad;
+  const totalFeedback = voteData.neutral + voteData.bad + voteData.good;
 
   let positive = 0;
   if (totalFeedback !== 0) {
