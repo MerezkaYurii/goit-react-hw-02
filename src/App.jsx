@@ -6,15 +6,8 @@ import Feedback from './components/Feedback/Feedback';
 import Notification from './components/Notification/Notification';
 
 function App() {
-  // const [voteData, setVoteData] = useState({
-  //   good: 0,
-  //   neutral: 0,
-  //   bad: 0,
-  // });
-
   const [voteData, setVoteData] = useState(() => {
     const saveDate = JSON.parse(localStorage.getItem('vote'));
-    // console.log(saveDate);
 
     if (saveDate?.length) {
       return { good: 0, neutral: 0, bad: 0 };
@@ -23,7 +16,6 @@ function App() {
   });
 
   const updateFeedback = feedbackType => {
-    console.log(feedbackType);
     setVoteData(prev => ({
       ...prev,
       [feedbackType]: prev[feedbackType] + 1,
