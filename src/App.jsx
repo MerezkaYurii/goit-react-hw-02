@@ -34,8 +34,8 @@ function App() {
     });
   };
 
-  const sum = voteData => {
-    return voteData.good + voteData.neutral + voteData.bad;
+  const sum = ({ good, neutral, bad }) => {
+    return good + neutral + bad;
   };
   const totalFeedback = sum(voteData);
 
