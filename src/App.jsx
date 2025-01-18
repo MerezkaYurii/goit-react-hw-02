@@ -34,8 +34,7 @@ function App() {
     });
   };
 
-  const totalFeedback = voteData.neutral + voteData.bad + voteData.good;
-
+  const totalFeedback = voteData.good + voteData.neutral + voteData.bad;
   let positive = 0;
   if (totalFeedback !== 0) {
     positive = Math.round((voteData.good / totalFeedback) * 100);
