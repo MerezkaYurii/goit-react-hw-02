@@ -35,10 +35,12 @@ function App() {
   };
 
   function getSum(arr) {
-    const values = Object.values(arr);
-    return values.reduce((acc, item) => {
-      return acc + item;
-    }, 0);
+    let total = 0;
+    const keys = Object.keys(arr);
+    for (const key of keys) {
+      total += arr[key];
+    }
+    return total;
   }
   const totalFeedback = getSum(voteData);
 
