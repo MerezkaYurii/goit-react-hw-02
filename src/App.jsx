@@ -6,14 +6,15 @@ import Feedback from './components/Feedback/Feedback';
 import Notification from './components/Notification/Notification';
 
 function App() {
-  const [voteData, setVoteData] = useState(() => {
+  const [voteData, setVoteData] = useState({ good: 0, neutral: 0, bad: 0 });
+
+  useEffect(() => {
     const saveDate = JSON.parse(localStorage.getItem('vote'));
 
-    if (saveDate?.length) {
-      return { good: 0, neutral: 0, bad: 0 };
+    if (saveDate) {
+      setVoteData(saveDate);
     }
-    return saveDate;
-  });
+  }, []);
 
   const updateFeedback = feedbackType => {
     setVoteData(prev => ({
@@ -34,7 +35,7 @@ function App() {
     });
   };
 
-  let totalFeedback = voteData.good + voteData.neutral + voteData.bad;
+  const totalFeedback = voteData.good + voteData.neutral + voteData.bad;
   let positive = 0;
   if (totalFeedback !== 0) {
     positive = Math.round((voteData.good / totalFeedback) * 100);
